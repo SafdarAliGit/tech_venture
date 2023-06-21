@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include tech_venture *.css
+recursive-include tech_venture *.csv
+recursive-include tech_venture *.html
+recursive-include tech_venture *.ico
+recursive-include tech_venture *.js
+recursive-include tech_venture *.json
+recursive-include tech_venture *.md
+recursive-include tech_venture *.png
+recursive-include tech_venture *.py
+recursive-include tech_venture *.svg
+recursive-include tech_venture *.txt
+recursive-exclude tech_venture *.pyc
