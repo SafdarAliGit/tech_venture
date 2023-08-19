@@ -504,7 +504,7 @@ def get_sales_invoice_items(result):
 			table_name = d.get('voucher_type')
 			child_table_name = table_name + ' Item'
 			vouher_items = frappe.db.sql(
-				"""SELECT item_name, qty, rate, amount FROM `tab%s` WHERE parent=%s AND parenttype=%s """
+				"""SELECT item_name, qty, rate, amount,description FROM `tab%s` WHERE parent=%s AND parenttype=%s """
 				% (child_table_name, '%s', '%s'), (d.get('voucher_no'), table_name), as_dict=1)
 			for item in vouher_items:
 				row = frappe._dict({
