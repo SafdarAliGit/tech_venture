@@ -511,7 +511,7 @@ def get_sales_invoice_items(result):
 				if (item.description) and (item.description !=item.item_name):
 					description = item.description
 				row = frappe._dict({
-					'particular':  f"{item.item_name} {description}",
+					'particular':  f"{item.item_name} - {description}",
 					'qty': item.qty,
 					'rate': item.rate,
 					'amount': item.amount
