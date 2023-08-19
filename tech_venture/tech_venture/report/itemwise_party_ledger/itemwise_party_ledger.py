@@ -497,7 +497,7 @@ def get_sales_invoice_items(result):
 		if d.account == ("'Opening'" or 'Opening'):
 			d.particular = 'Opening'
 		if d.get('voucher_no') and d.get('against'):
-			d.particular = '{0}, {1}'.format(d.get('voucher_no'), d.get('against'))
+			d.particular = '{0}, {1} ({2})'.format(d.get('voucher_no'), d.get('against'), d.get('description'))
 
 		result_with_sales_items.append(d)
 		if d.get('voucher_type') in ['Sales Invoice', 'Purchase Invoice'] and d.get('voucher_no'):
@@ -507,11 +507,8 @@ def get_sales_invoice_items(result):
 				"""SELECT item_name, qty, rate, amount FROM `tab%s` WHERE parent=%s AND parenttype=%s """
 				% (child_table_name, '%s', '%s'), (d.get('voucher_no'), table_name), as_dict=1)
 			for item in vouher_items:
-				description = ""
-				if (item.description):
-					description = f",{item.description}"
 				row = frappe._dict({
-					'particular':  f"{item.item_name}  {description}",
+					'particular':  item.item_name,
 					'qty': item.qty,
 					'rate': item.rate,
 					'amount': item.amount
